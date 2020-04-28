@@ -913,8 +913,9 @@ namespace IdentityServer3.Tests.Endpoints
             var cookies = resp.Headers.GetValues("Set-Cookie");
             // cookies: primary, partial, external
             cookies.Count().Should().Be(3);
-            // GetCookies will not return values for cookies that are expired/revoked
-            resp.GetCookies().Count().Should().Be(0);
+            // GetCookies did not return values for cookies that are expired/revoked in Microsoft.AspNet.WebApi.Client 5.2.3
+            // This behavior changed in 5.2.7
+            resp.GetCookies().Count().Should().Be(3);
         }
 
         [Fact]

@@ -111,6 +111,8 @@ namespace IdentityServer3.Core.Extensions
                 url = url.Substring(0, url.Length - 1);
             }
 
+            if(url.Contains(" "))
+                url = Uri.EscapeUriString(url); //If there is a space in the path, encode it
             return url;
         }
         

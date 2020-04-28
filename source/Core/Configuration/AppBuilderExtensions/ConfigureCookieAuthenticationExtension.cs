@@ -92,7 +92,7 @@ namespace Owin
             {
                 if (!String.IsNullOrWhiteSpace(path))
                 {
-                    primary.CookiePath = external.CookiePath = path;
+                    primary.CookiePath = external.CookiePath = path.CleanUrlPath();
                     partial.CookiePath = path;
                 }
             };
